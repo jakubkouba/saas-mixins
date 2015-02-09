@@ -1,0 +1,28 @@
+
+$isOldIE: false !default;
+
+@mixin modular-mq($breakpoint) {
+    // if it's not old IE
+    @if $isOldIE == false {
+        // add the correct media query
+        @if $breakpoint == small {
+            @media (screen and min-width: $small) { @content; }
+        }
+        @else if $breakpoint == medium {
+            @media (screen and min-width: $medium) { @content; }
+        }
+        @else if $breakpoint == large {
+            @media (screen and min-width: $large) { @content; }
+        }
+        @else if $breakpoint == extra-large {
+            @media (screen and min-width: $extra-large) { @content; }
+        }
+        @else if $breakpoint == extra-extra-large {
+          @media (screen and min-width: $extra-extra-large) { @content; }
+        }
+    } @else {
+        // it's old IE
+        // add all the styles
+        @content;
+    }
+}
